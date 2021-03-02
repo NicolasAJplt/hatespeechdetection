@@ -1,7 +1,7 @@
 Flask
 pandas
 nltk
-re
+regex
 numpy
 scikit-learn
 gunicorn
