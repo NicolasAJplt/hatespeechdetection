@@ -28,4 +28,6 @@ def predict():
     return render_template('index.html', prediction_text=output)
  
 if __name__ == "__main__":
+    with open('model.pkl', 'rb') as f:
+        users = joblib.load(f)
     app.run(debug=True)
