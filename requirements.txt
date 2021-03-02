@@ -1,7 +1,0 @@
-Flask
-pandas
-nltk
-regex
-numpy
-scikit-learn
-gunicorn
