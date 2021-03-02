@@ -35,3 +35,36 @@
 <p><span id="proba"></span></p>
 </body>
 
+<!–– Javascript ––>
+<script src="{{ url_for('static', filename='js/jquery.3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.1.14.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.4.1.3.min.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+  function predictSubmit(ev) {
+    ev.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/predict',
+      data: $(this).serialize(),
+      beforeSend: function() {
+        $("#predict-button").html("<i class='fa fa-spinner fa-spin'></i> Predicting...");
+      }
+    })
+    .done(function(data) {
+      $('#resultado').html("Result: " + data.result);
+      $('#probabilidade').html("Proba: " + data.proba + "%");       
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      $('#result').html('<p>Erro: '+jqXHR.status+'</p><p>Descrição: ' + jqXHR.responseJSON.erro + '</p>');    
+    })
+    .always(function() {
+      $("#predict-button").html("<i class='far fa-play-circle'></i> Predict");
+    });
+  }
+
+  $('#predict').on('submit', predictSubmit);
+
+}); 
+</script>
