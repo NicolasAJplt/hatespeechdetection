@@ -27,7 +27,4 @@ def predict():
 
     return render_template('index.html', prediction_text=output)
  
-if __name__ == "__main__":
-    from class_def import Preprocess 
-    from preprocessing import preprocessing
-    app.run(debug=True)
+return app
