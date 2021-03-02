@@ -1,5 +1,5 @@
 Flask
-pickle
+joblib
 pandas
 nltk
 regex
